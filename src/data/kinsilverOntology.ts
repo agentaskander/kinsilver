@@ -359,7 +359,7 @@ export const qualityOntology = {
   silverPlating: ".999 fine silver plating",
   minimumMicrons: 20,
   nickelFree: true,
-  infantSafe: "Food-safe supplier certification required before checkout opens",
+  infantSafe: "Products are sourced only from suppliers meeting our safety requirements.",
   engravingReady: "Smooth handle reserved for laser engraving",
   packagingStandards: [
     "rigid keepsake gift box",
