@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #1a1510;
+  background: #f8f4ee;
+  font-family: "Jost", system-ui, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    linear-gradient(180deg, rgba(248, 244, 238, 0.96), rgba(248, 244, 238, 1)),
+    #f8f4ee;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+::selection {
+  background: #b8965a;
+  color: #1a1510;
+}
+
+@layer components {
+  .page-shell {
+    @apply mx-auto w-[min(100%-32px,1180px)];
+  }
+
+  .eyebrow {
+    @apply mb-3 text-xs font-bold uppercase tracking-[0.18em] text-gold;
+  }
+
+  .display {
+    @apply font-serif text-[clamp(3.4rem,9vw,8.2rem)] font-bold leading-[0.92] tracking-normal;
+  }
+
+  .h1 {
+    @apply font-serif text-[clamp(3rem,7vw,6.4rem)] font-bold leading-[0.94] tracking-normal;
+  }
+
+  .h2 {
+    @apply font-serif text-[clamp(2.4rem,5vw,4.8rem)] font-bold leading-[0.98] tracking-normal;
+  }
+
+  .h3 {
+    @apply font-serif text-3xl font-semibold leading-tight tracking-normal;
+  }
+
+  .body-lg {
+    @apply text-lg leading-8 text-brown;
+  }
+
+  .button-primary {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-gold px-5 py-3 text-sm font-bold text-ink transition hover:bg-[#c5a66d] focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-cream;
+  }
+
+  .button-secondary {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-md border border-ink/15 px-5 py-3 text-sm font-bold text-ink transition hover:border-gold hover:text-ink focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-cream;
+  }
+
+  .editorial-card {
+    @apply rounded-lg border border-brown/15 bg-[#fffaf2]/70 p-6 shadow-none;
+  }
+
+  .ink-band {
+    @apply bg-ink text-cream;
+  }
+}
