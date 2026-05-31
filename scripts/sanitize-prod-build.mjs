@@ -7,11 +7,44 @@ const replacements = new Map([
   ["quality ontology", "quality standards"],
   ["Supplier ontology", "Supplier standards"],
   ["supplier ontology", "supplier standards"],
-  ["launchGate", "launch readiness"],
-  ["checkoutGate", "checkout readiness"],
   ["supplierOntology", "supplier standards"],
-  ["qualityOntology", "quality standards"]
+  ["qualityOntology", "quality standards"],
+  ["launchGate", "launch readiness"],
+  ["checkoutGate", "checkout readiness"]
 ]);
+
+const javascriptReplacements = new Map([
+  ["Quality ontology", "Quality standards"],
+  ["quality ontology", "quality standards"],
+  ["Supplier ontology", "Supplier standards"],
+  ["supplier ontology", "supplier standards"],
+  ["supplierOntology", "supplierStandards"],
+  ["qualityOntology", "qualityStandards"],
+  ["launchGate", "launchReadiness"],
+  ["checkoutGate", "checkoutReadiness"]
+]);
+
+const forbiddenReplacementTerms = [
+  "Kin",
+  "KIN",
+  "KinSilver",
+  "kinSilver",
+  "kinsilver",
+  "brand",
+  "title",
+  "product",
+  "story",
+  "internal",
+  "agent",
+  "ontology"
+];
+
+for (const term of forbiddenReplacementTerms) {
+  if (replacements.has(term) || javascriptReplacements.has(term)) {
+    console.error(`Sanitize configuration rejected broad replacement term: ${term}`);
+    process.exit(1);
+  }
+}
 
 const textExtensions = new Set([
   ".css",
@@ -50,8 +83,9 @@ try {
   for (const file of files) {
     const original = await readFile(file, "utf8");
     let next = original;
+    const activeReplacements = [".js", ".mjs"].includes(path.extname(file)) ? javascriptReplacements : replacements;
 
-    for (const [from, to] of replacements) {
+    for (const [from, to] of activeReplacements) {
       const before = next;
       next = next.split(from).join(to);
       if (next !== before) {
