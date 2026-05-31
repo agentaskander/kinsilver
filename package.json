@@ -5,10 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 5193 --strictPort",
-    "build": "tsc -b && vite build",
+    "build": "npm run build:prod",
+    "build:raw": "vite build",
     "build:dev": "vite build --outDir dist-dev",
     "build:stage": "vite build --outDir dist-stage && node scripts/audit-stage-build.mjs",
     "build:prod": "vite build --outDir dist-prod && node scripts/sanitize-prod-build.mjs && node scripts/audit-prod-build.mjs",
+    "assert:prod": "node scripts/assert-prod-output.mjs",
     "test": "vitest run",
     "preview": "vite preview --host 127.0.0.1 --port 5193 --strictPort",
     "preview:prod": "vite preview --host 127.0.0.1 --port 5194 --strictPort --outDir dist-prod",
