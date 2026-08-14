@@ -16,3 +16,6 @@ docs-private/
 *.key
 *secret*
 *token*
+
+# Generated and worktree-backed deployment zones.
+_sites/
